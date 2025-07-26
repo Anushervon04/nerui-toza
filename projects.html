@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="tg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лоиҳаҳо - Неруи Тоза</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 1. Root Variables */
+        :root {
+            --primary: #2e7d32;
+            --primary-dark: #1b5e20;
+            --primary-light: #4caf50;
+            --accent: #8bc34a;
+            --accent-dark: #689f38;
+            --gold: #ffd700;
+            --light: #f5f5f6;
+            --text: #263238;
+            --text-light: #78909c;
+            --white: #ffffff;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* 2. Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* 3. Utility Classes */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+
+        .section-title .divider {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 16px 38px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            font-size: 1rem;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 4. Header Styles */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .logo-text span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            position: relative;
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        /* 5. Hero Section */
+        .projects-hero {
+            height: 70vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80') center/cover;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        /* 6. Projects Section */
+        .projects-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .tab-btn {
+            padding: 12px 30px;
+            background: transparent;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-title {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .project-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .project-meta i {
+            color: var(--accent);
+        }
+
+        .project-desc {
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        /* 7. Stats Section */
+        .stats-section {
+            background: linear-gradient(to right, var(--primary-dark), var(--primary));
+            color: white;
+            padding: 100px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 30px;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* 8. Testimonials */
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            margin: 20px;
+        }
+
+        .client-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 5px solid var(--accent);
+        }
+
+        .client-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .client-name {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .client-position {
+            color: var(--accent-dark);
+            font-weight: 600;
+        }
+
+        /* 9. CTA Section */
+        .cta-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80') center/cover;
+            color: white;
+            text-align: center;
+            padding: 120px 0;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* 10. Footer */
+        footer {
+            background: linear-gradient(to right, var(--primary-dark), var(--primary));
+            color: white;
+            padding: 100px 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .footer-links a i {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* 11. Responsive Design */
+        @media (max-width: 992px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .hero-content h1 {
+                font-size: 3.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 90px;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                padding: 30px;
+                background: var(--white);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: var(--transition);
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            
+            .projects-hero {
+                height: 60vh;
+                min-height: 500px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 70px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .projects-hero {
+                height: 50vh;
+                min-height: 400px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 1. Header Section -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="logo-text">Неруи <span>Тоза</span></div>
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="./nerusabz.tj.html">Асосӣ</a></li>
+                    <li><a href="about.html">Дар бораи мо</a></li>
+                    <li><a href="services.html">Хизматҳо</a></li>
+                    <li><a href="projects.html" class="active">Лоиҳаҳо</a></li>
+                    <li><a href="contact.html">Тамос</a></li>
+                </ul>
+                
+                <div class="mobile-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <section class="projects-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Лоиҳаҳои мо</h1>
+                <p>Таҷрибаи мо дар иҷрои лоиҳаҳои нерӯи тоза дар саросари Тоҷикистон</p>
+                <a href="#projects" class="btn">Лоиҳаҳоро бубинед <i class="fas fa-arrow-down"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Лоиҳаҳои охирин</h2>
+                <div class="divider"></div>
+                <p>Маҷмӯи лоиҳаҳое, ки мо бо ифтихор иҷро кардаем</p>
+            </div>
+            
+            <div class="projects-tabs">
+                <button class="tab-btn active" data-filter="all">Ҳама</button>
+                <button class="tab-btn" data-filter="solar">Нерӯи офтобӣ</button>
+                <button class="tab-btn" data-filter="hydro">Нерӯи обӣ</button>
+                <button class="tab-btn" data-filter="wind">Нерӯи бодӣ</button>
+                <button class="tab-btn" data-filter="bio">Биогаз</button>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card" data-category="solar">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Нерӯгоҳи офтобӣ дар Хоруғ">
+                        <span class="project-badge">Нерӯи офтобӣ</span>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Нерӯгоҳи офтобии Хоруғ</h3>
+                        <div class="project-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Хоруғ</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2022</span>
+                        </div>
+                        <p class="project-desc">Иҷрои системаи 5MW нерӯи офтобӣ барои таъмини нерӯи барқии шаҳри Хоруғ ва атрофи он.</p>
+                        <a href="#" class="btn btn-sm">Маълумоти бештар</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card" data-category="hydro">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Нерӯгоҳи хурди обӣ">
+                        <span class="project-badge">Нерӯи обӣ</span>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Нерӯгоҳи хурди обӣ дар Варзоб</h3>
+                        <div class="project-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Варзоб</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2021</span>
+                        </div>
+                        <p class="project-desc">Сохтмони нерӯгоҳи хурди обии 500kW барои таъмини нерӯи барқии деҳаҳои атрофи Варзоб.</p>
+                        <a href="#" class="btn btn-sm">Маълумоти бештар</a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card" data-category="bio">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Лоиҳаи биогазӣ">
+                        <span class="project-badge">Биогаз</span>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Системаи биогазӣ дар Ҳисор</h3>
+                        <div class="project-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Ҳисор</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2020</span>
+                        </div>
+                        <p class="project-desc">Таҳия ва насби системаҳои биогазӣ барои 50 хоҷагии деҳқонии ноҳияи Ҳисор.</p>
+                        <a href="#" class="btn btn-sm">Маълумоти бештар</a>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card" data-category="solar">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Панелҳои офтобӣ">
+                        <span class="project-badge">Нерӯи офтобӣ</span>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Панелҳои офтобӣ барои мактабҳо</h3>
+                        <div class="project-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> ВМКБ</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2019</span>
+                        </div>
+                        <p class="project-desc">Таъмини 25 мактаби ноҳияҳои ВМКБ бо системаҳои нерӯи офтобӣ.</p>
+                        <a href="#" class="btn btn-sm">Маълумоти бештар</a>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-card" data-category="wind">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1495012379376-194d5167cc6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Турбинаҳои бодӣ">
+                        <span class="project-badge">Нерӯи бодӣ</span>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Турбинаҳои бодии Исфара</h3>
+                        <div class="project-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Исфара</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2018</span>
+                        </div>
+                        <p class="project-desc">Сохтмони 10 турбинаи бодӣ бо иқтидори умумии 2MW дар ноҳияи Исфара.</p>
+                        <a href="#" class="btn btn-sm">Маълумоти бештар</a>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="project-card" data-category="hydro">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1437482078695-8d9f1a5f0335?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Нерӯгоҳи обӣ">
+                        <span class="project-badge">Нерӯи обӣ</span>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Нерӯгоҳи обии Рашт</h3>
+                        <div class="project-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Рашт</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2017</span>
+                        </div>
+                        <p class="project-desc">Барқарорсозии нерӯгоҳи обии каҳнашудаи Рашт бо иқтидори 1.5MW.</p>
+                        <a href="#" class="btn btn-sm">Маълумоти бештар</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Лоиҳаҳои иҷрошуда</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">25MW</div>
+                    <div class="stat-label">Иқтидори умумӣ</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Ноҳияҳо</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Истифодабарандагон</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Testimonials Section -->
+    <section class="section" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Баҳои муштариён</h2>
+                <div class="divider"></div>
+                <p>Чӣ гуна муштариёни мо дар бораи лоиҳаҳо сухан мегӯянд</p>
+            </div>
+            
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Ҷумъаев Ф." class="client-avatar">
+                    <p class="client-quote">"Аз вақте ки системаи нерӯи офтобии "Неруи Тоза" насб карда шуд, мо дигар мушкилоти нерӯ надорем. Ҳатто дар зимистон низ нерӯи кофӣ дорем."</p>
+                    <h4 class="client-name">Ҷумъаев Ф.</h4>
+                    <div class="client-position">Сардори деҳаи Варзоб</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Қодирова М." class="client-avatar">
+                    <p class="client-quote">"Системаи биогазӣ зиндагии моро комилан тағйир дод. Ҳоло мо нерӯи кофӣ барои хона ва чорводорӣ дорем, инчунин партовҳоро барои замин истифода мебарем."</p>
+                    <h4 class="client-name">Қодирова М.</h4>
+                    <div class="client-position">Деҳқони ноҳияи Ҳисор</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Оё шумо лоиҳае дар назар доред?</h2>
+                <p>Мо барои кӯмак ба шумо омодаем. Бо мутахассисони мо тамос гиред ва лоиҳаи худро бо мо пеш бибаред.</p>
+                <a href="contact.html" class="btn">Тамос гиред <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Дар бораи мо</h4>
+                    <p>"Неруи Тоза" - ташкилоти ғайридавлатӣ, ки ба рушди технологияҳои биогазӣ ва нерӯҳои тоза дар Тоҷикистон машғул аст.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Пайвандҳо</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Асосӣ</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> Дар бораи мо</a></li>
+                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Хизматҳо</a></li>
+                        <li><a href="projects.html"><i class="fas fa-chevron-right"></i> Лоиҳаҳо</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Тамос</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Хидматҳо</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Машварати техникӣ</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Насби системаҳо</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Таъминоти техникӣ</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Омӯзиш ва таълим</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Тамос</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Душанбе, кӯчаи Шерали Ҷӯраев 5</li>
+                        <li><i class="fas fa-phone-alt"></i> +992 93 123 4567</li>
+                        <li><i class="fas fa-envelope"></i> info@nerui-toza.tj</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 "Неруи Тоза". Ҳама ҳуқуқҳо ҳифз шудаанд.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 8. JavaScript -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        mobileToggle.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    }
+                }
+            });
+        });
+        
+        // Projects Filter
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Testimonial Slider
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial-card');
+        
+        function showTestimonial(index) {
+            testimonials.forEach((testimonial, i) => {
+                testimonial.style.display = i === index ? 'block' : 'none';
+            });
+        }
+        
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }
+        
+        // Initialize
+        showTestimonial(0);
+        setInterval(nextTestimonial, 5000);
+        
+        // Animate Elements on Scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.project-card, .stat-item, .testimonial-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animated elements
+        document.querySelectorAll('.project-card, .stat-item, .testimonial-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s, transform 0.6s';
+        });
+        
+        // Run animation on load and scroll
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>

@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="tg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нури Офтобӣ - Ҳалли Энергетикии Худкоро барои Тоҷикистон</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1976d2;
+            --primary-dark: #1565c0;
+            --primary-light: #42a5f5;
+            --accent: #ff9800;
+            --accent-dark: #f57c00;
+            --gold: #ffd700;
+            --light: #f5f5f6;
+            --text: #263238;
+            --text-light: #78909c;
+            --white: #ffffff;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+
+        .section-title .divider {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 16px 38px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            font-size: 1rem;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .logo-text span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 800px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80') center/cover;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-text {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            opacity: 0.9;
+        }
+
+        /* Features Section */
+        .features {
+            background-color: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-light), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotateY(360deg);
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        /* Calculator Section */
+        .calculator {
+            background: linear-gradient(to right, rgba(21, 101, 192, 0.05), rgba(25, 118, 210, 0.05));
+        }
+
+        .calculator-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .calculator-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--primary-dark);
+        }
+
+        .calculator-content p {
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .calculator-form {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 16px 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.2);
+        }
+
+        .slider-container {
+            margin-top: 15px;
+        }
+
+        .slider {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            background: var(--accent);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            background: var(--primary);
+        }
+
+        .slider-value {
+            text-align: right;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 5px;
+        }
+
+        .calculator-result {
+            background: var(--primary);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .result-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .result-item {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .result-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+
+        .result-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            background: var(--white);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-category {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* News Section */
+        .news-section {
+            background: linear-gradient(to right, rgba(255, 152, 0, 0.05), rgba(245, 124, 0, 0.05));
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .news-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .news-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .news-card:hover .news-image img {
+            transform: scale(1.1);
+        }
+
+        .news-content {
+            padding: 25px;
+        }
+
+        .news-date {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .news-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .news-excerpt {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .news-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .news-link:hover {
+            color: var(--primary-dark);
+            gap: 12px;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(to right, var(--primary-dark), var(--primary));
+            color: white;
+            padding: 100px 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .footer-about p {
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .footer-links a i {
+            color: var(--accent);
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-info i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .calculator-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 90px;
+                left: 0;
+                background: var(--white);
+                width: 100%;
+                flex-direction: column;
+                padding: 30px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .section {
+                padding: 70px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-solar-panel"></i>
+                    </div>
+                    <div class="logo-text">Нури <span>Офтобӣ</span></div>
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="./nerusabz.tj.html" class="active">Асосӣ</a></li>
+                    <li><a href="#features">Технология</a></li>
+                    <li><a href="#calculator">Ҳисобкунак</a></li>
+                    <li><a href="#projects">Лоиҳаҳо</a></li>
+                    <li><a href="#news">Ахбор</a></li>
+                    <li><a href="./contact.html">Тамос</a></li>
+                </ul>
+                
+                <div class="mobile-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Нури Офтобӣ - Ҳалли Энергетикии Пойдор барои Тоҷикистон</h1>
+                <p>Истифодаи нерӯи офтобӣ барои таъмини барқи тоза ва арзон ба сокинони кишвар</p>
+                
+                <div class="hero-buttons">
+                    <a href="#calculator" class="btn">Ҳисобкунак</a>
+                    <a href="#projects" class="btn btn-outline">Лоиҳаҳои Мо</a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-text">Лоиҳаҳои иҷрошуда</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-text">Нерӯи тоза</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10,000+</div>
+                        <div class="stat-text">Оилаҳои манфиатбар</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Технологияҳои Нури Офтобӣ</h2>
+                <div class="divider"></div>
+                <p>Табдил додани нурҳои офтоб ба нерӯи барқӣ бо системаҳои фотоэлектрикӣ</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3>Панелҳои Офтобӣ</h3>
+                    <p>Панелҳои фотоэлектрикӣ нурҳои офтобро ба барқи DC табдил медиҳанд</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Инверторҳо</h3>
+                    <p>Барқи DC-ро ба AC табдил медиҳанд, ки барои истифодаи умумӣ мувофиқ аст</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                    <h3>Системаҳои Нигоҳдорӣ</h3>
+                    <p>Батареяҳо нерӯи иловагиро нигоҳ медоранд ва дар вақти нодурустӣ истифода мебаранд</p>
+                </div>
+            </div>
+            
+            <div class="infographic" style="margin-top: 60px; text-align: center; background: rgba(255, 152, 0, 0.1); padding: 40px; border-radius: 15px;">
+                <h3 style="font-size: 1.8rem; margin-bottom: 30px; color: var(--primary-dark);">Раванди Истеҳсоли Нерӯи Офтобӣ</h3>
+                <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px;">
+                    <div style="text-align: center; max-width: 200px;">
+                        <div style="width: 80px; height: 80px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 2rem;">
+                            1
+                        </div>
+                        <h4>Ҷазби нурҳо</h4>
+                        <p style="color: var(--text-light);">Панелҳо нурҳои офтобро ҷабб мекунанд</p>
+                    </div>
+                    
+                    <div style="text-align: center; max-width: 200px;">
+                        <div style="width: 80px; height: 80px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 2rem;">
+                            2
+                        </div>
+                        <h4>Тавлиди барқ</h4>
+                        <p style="color: var(--text-light);">Нурҳо ба барқи DC табдил меёбанд</p>
+                    </div>
+                    
+                    <div style="text-align: center; max-width: 200px;">
+                        <div style="width: 80px; height: 80px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 2rem;">
+                            3
+                        </div>
+                        <h4>Табдил ба AC</h4>
+                        <p style="color: var(--text-light);">Инвертор барқро ба AC табдил медиҳад</p>
+                    </div>
+                    
+                    <div style="text-align: center; max-width: 200px;">
+                        <div style="width: 80px; height: 80px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 2rem;">
+                            4
+                        </div>
+                        <h4>Истифода ё нигоҳдорӣ</h4>
+                        <p style="color: var(--text-light);">Барқ истифода мешавад ё дар батарея нигоҳ дошта мешавад</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="section calculator" id="calculator">
+        <div class="container">
+            <div class="section-title">
+                <h2>Калкулятори Нури Офтобӣ</h2>
+                <div class="divider"></div>
+                <p>Ҳисоб кунед, ки чӣ қадар нерӯ аз системаи офтобӣ истеҳсол карда метавонед</p>
+            </div>
+            
+            <div class="calculator-container">
+                <div class="calculator-content">
+                    <h2>Фоидаи иқтисодии системаи офтобӣ</h2>
+                    <p>Бо ёрии калкулятори мо шумо метавонед миқдори сармоягузории аввал, миқдори нерӯи истеҳсолшаванда ва фоидаи иқтисодиро ҳисоб кунед.</p>
+                    
+                    <div class="feature-card" style="margin-top: 30px;">
+                        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                            <div style="width: 50px; height: 50px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div>
+                                <h4>Хонаи 3 хобгоҳа</h4>
+                                <p>~ 5 кВт системаи зарурӣ</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="width: 50px; height: 50px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+                                <i class="fas fa-industry"></i>
+                            </div>
+                            <div>
+                                <h4>Корхонаи хурд</h4>
+                                <p>~ 20 кВт системаи зарурӣ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="calculator-form">
+                    <h3>Параметрҳои ҳисоб</h3>
+                    
+                    <div class="form-group">
+                        <label for="system-type">Навъи система:</label>
+                        <select id="system-type">
+                            <option value="1.5">Хонаи хурд (1-2 хобгоҳа)</option>
+                            <option value="5">Хонаи миёна (3-4 хобгоҳа)</option>
+                            <option value="10">Хонаи калон (5+ хобгоҳа)</option>
+                            <option value="20">Корхонаи хурд</option>
+                            <option value="50">Корхонаи миёна</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="roof-area">Масоҳати бом (м²):</label>
+                        <input type="range" id="roof-area" class="slider" min="10" max="200" value="50" step="5">
+                        <div class="slider-value"><span id="roof-area-value">50</span> м²</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sun-hours">Миқдори соатҳои офтобӣ:</label>
+                        <input type="range" id="sun-hours" class="slider" min="3" max="8" value="5" step="0.5">
+                        <div class="slider-value"><span id="sun-hours-value">5</span> соат/рӯз</div>
+                    </div>
+                    
+                    <button id="calculate-btn" class="btn">Ҳисоб кардан</button>
+                    
+                    <div class="calculator-result" id="result">
+                        <div class="result-title">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Натиҷаи ҳисоб</h3>
+                        </div>
+                        
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <div class="result-value"><span id="power">25</span> кВт</div>
+                                <div class="result-label">Иқтидори система</div>
+                            </div>
+                            
+                            <div class="result-item">
+                                <div class="result-value"><span id="daily">125</span> кВт·ч</div>
+                                <div class="result-label">Истеҳсол дар як рӯз</div>
+                            </div>
+                            
+                            <div class="result-item">
+                                <div class="result-value">$<span id="savings">300</span></div>
+                                <div class="result-label">Ҳаққи нерӯ дар моҳ</div>
+                            </div>
+                            
+                            <div class="result-item">
+                                <div class="result-value"><span id="roi">7</span> сол</div>
+                                <div class="result-label">Баргардонидани сармоя</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Лоиҳаҳои Нури Офтобӣ</h2>
+                <div class="divider"></div>
+                <p>Лоиҳаҳои иҷрошудаи мо дар саросари Тоҷикистон</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Project">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Ноҳияи Варзоб</div>
+                        <h3 class="project-title">Системаи офтобӣ барои мактаб</h3>
+                        <p>Насби системаи 15 кВт барои мактаби деҳа дар Варзоб</p>
+                        <div class="project-meta">
+                            <div><i class="far fa-calendar"></i> 12.07.2023</div>
+                            <div><i class="fas fa-map-marker-alt"></i> Ноҳияи Варзоб</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Project">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Вилояти Суғд</div>
+                        <h3 class="project-title">Лоиҳаи "Офтоб барои деҳот"</h3>
+                        <p>Таъмини 10 деҳа бо системаҳои офтобӣ дар вилояти Суғд</p>
+                        <div class="project-meta">
+                            <div><i class="far fa-calendar"></i> 28.05.2023</div>
+                            <div><i class="fas fa-map-marker-alt"></i> Вилояти Суғд</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Project">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-category">Вилояти Хатлон</div>
+                        <h3 class="project-title">Истгоҳи калони офтобӣ</h3>
+                        <p>Истгоҳи 1 МВт барои таъмини барқи деҳоти вилояти Хатлон</p>
+                        <div class="project-meta">
+                            <div><i class="far fa-calendar"></i> 15.04.2023</div>
+                            <div><i class="fas fa-map-marker-alt"></i> Вилояти Хатлон</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="section news-section" id="news">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ахбори Охирон</h2>
+                <div class="divider"></div>
+                <p>Навҳо ва маълумотҳо дар бораи технологияҳои нерӯи офтобӣ</p>
+            </div>
+            
+            <div class="news-grid" id="news-container">
+                <!-- News will be loaded dynamically here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Дар бораи мо</h4>
+                    <div class="footer-about">
+                        <p>"Нури Офтобӣ" - ташкилоти ғайридавлатӣ, ки ба рушди технологияҳои нерӯи тоза дар Тоҷикистон машғул аст.</p>
+                        <p>Мо барои офаридани ояндаи пойдор ва тоза кӯшиш мекунем.</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Пайвандҳо</h4>
+                    <ul class="footer-links">
+                        <li><a href="./about.html"><i class="fas fa-chevron-right"></i> Дар бораи мо</a></li>
+                        <li><a href="./services.html"><i class="fas fa-chevron-right"></i> Хидматҳо</a></li>
+                        <li><a href="./projects.html"><i class="fas fa-chevron-right"></i> Лоиҳаҳо</a></li>
+                        <li><a href="./about.html"><i class="fas fa-chevron-right"></i> Маълумотнома</a></li>
+
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Хидматҳо</h4>
+                    <ul class="footer-links">
+                        <li><a href="./oftob.html"><i class="fas fa-chevron-right"></i> Нерӯи офтобӣ</a></li>
+                        <li><a href="./neru.html"><i class="fas fa-chevron-right"></i> Биогаз</a></li>
+                        <li><a href="./oftob.html"><i class="fas fa-chevron-right"></i> Самаранокии энергетикӣ</a></li>
+                        <li><a href="./seminar.html"><i class="fas fa-chevron-right"></i> Машваратҳо</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Тамос</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>734025, Душанбе, кӯчаи Шерали Ҷӯраев 5</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+992 93 123 4567</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@nerui-sabz.tj</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Душанбе-Ҷумъа: 8:00 - 18:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 "Неруи Сабз". Ҳама ҳуқуқҳо ҳифз шудаанд.</p>
+                <p>Таҳиягар: Маркази технологияҳои пойдор</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Mobile Navigation
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mobileToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+        
+        // Update slider values
+        const roofSlider = document.getElementById('roof-area');
+        const roofValue = document.getElementById('roof-area-value');
+        const sunSlider = document.getElementById('sun-hours');
+        const sunValue = document.getElementById('sun-hours-value');
+        
+        roofSlider.addEventListener('input', () => {
+            roofValue.textContent = roofSlider.value;
+        });
+        
+        sunSlider.addEventListener('input', () => {
+            sunValue.textContent = sunSlider.value;
+        });
+        
+        // Solar Calculator
+        const calculateBtn = document.getElementById('calculate-btn');
+        const resultDiv = document.getElementById('result');
+        const powerSpan = document.getElementById('power');
+        const dailySpan = document.getElementById('daily');
+        const savingsSpan = document.getElementById('savings');
+        const roiSpan = document.getElementById('roi');
+        
+        calculateBtn.addEventListener('click', () => {
+            const systemType = parseFloat(document.getElementById('system-type').value);
+            const roofArea = parseInt(roofSlider.value);
+            const sunHours = parseFloat(sunSlider.value);
+            
+            // Calculations
+            const systemPower = Math.round(systemType * (roofArea / 20) * 10) / 10;
+            const dailyProduction = Math.round(systemPower * sunHours * 10) / 10;
+            const monthlySavings = Math.round(dailyProduction * 0.15 * 30);
+            const roiYears = (systemPower * 1000 / (monthlySavings * 12)).toFixed(1);
+            
+            // Update results
+            powerSpan.textContent = systemPower;
+            dailySpan.textContent = dailyProduction;
+            savingsSpan.textContent = monthlySavings;
+            roiSpan.textContent = roiYears;
+            
+            // Show results
+            resultDiv.style.display = 'block';
+            
+            // Scroll to results
+            resultDiv.scrollIntoView({behavior: 'smooth', block: 'center'});
+        });
+        
+        // News Feed
+        const newsContainer = document.getElementById('news-container');
+        const newsData = [
+            {
+                title: "Лоиҳаи нави офтобӣ дар ноҳияи Файзобод",
+                excerpt: "Лоиҳаи нави офтобӣ бо иқтидори 100 кВт дар ноҳияи Файзобод иҷро шуд. Ин лоиҳа 200 оиларо бо барқ таъмин мекунад.",
+                date: "15 октябр 2023",
+                image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                title: "Семинари омӯзишӣ оид ба технологияҳои офтобӣ",
+                excerpt: "Дар шаҳри Хуҷанд семинари омӯзишӣ оид ба технологияҳои офтобӣ баргузор шуд. Зиёда аз 100 нафар иштирокчиён аз саросари вилоят иштирок карданд.",
+                date: "5 октябр 2023",
+                image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                title: "Нашрияи нави оид ба технологияҳои нерӯи тоза",
+                excerpt: "Нашрияи нави мо 'Нури Офтобӣ - ҳалли иқтисодӣ ва экологӣ' ба забони тоҷикӣ ба табъ расид. Ин китоб дар бораи асосҳои технологияи офтобӣ маълумот медиҳад.",
+                date: "28 сентябр 2023",
+                image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+            }
+        ];
+        
+        function loadNews() {
+            newsContainer.innerHTML = '';
+            
+            newsData.forEach(news => {
+                const newsCard = document.createElement('div');
+                newsCard.className = 'news-card';
+                newsCard.innerHTML = `
+                    <div class="news-image">
+                        <img src="${news.image}" alt="${news.title}">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">
+                            <i class="far fa-calendar"></i> ${news.date}
+                        </div>
+                        <h3 class="news-title">${news.title}</h3>
+                        <p class="news-excerpt">${news.excerpt}</p>
+                        <a href="#" class="news-link">
+                            Маълумоти бештар <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                `;
+                
+                newsContainer.appendChild(newsCard);
+            });
+        }
+        
+        // Initialize news
+        loadNews();
+        
+        // Animation effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.feature-card, .project-card, .news-card');
+            
+            animatedElements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.8s, transform 0.8s';
+                
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, 200 + (index * 100));
+            });
+        });
+    </script>
+</body>
+</html>
